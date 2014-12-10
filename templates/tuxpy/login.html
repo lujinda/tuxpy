@@ -1,0 +1,39 @@
+<!Doctype html>
+<html>
+    <head>
+        <meta http-equiv=Content-Type content="text/html;charset=utf-8" />
+        <link rel="stylesheet" href="{{static_url("tuxpy/css/login.css") }}" />
+        <title>请登录账号</title>
+    </head>
+    <body>
+        <div id="login_wrap">
+            <form method="POST" action="">
+                <ul>
+                    <li>
+                    <h3 id="login_title">请登录哦</h3>
+                    </li>
+                    <li>
+                    用户名:
+                    </li>
+                    <li>
+                    <input id="login_user" type="text" name="login_user" />
+                    </li>
+                    <li>
+                    密码:
+                    </li>
+                    <li>
+                    <input type="password" id="login_pass" type="text" name="login_pass" />
+                    </li>
+
+                    <li>
+                    <input id="login_btn" type="submit" value="登录" />
+                    </li>
+                    <li style="color:red;margin-top:5px;">
+                    {{ err_mess }}
+                    </li>
+                </ul>
+            </form>
+        </div>
+
+    </body>
+</html>

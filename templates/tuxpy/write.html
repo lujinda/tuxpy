@@ -1,0 +1,106 @@
+{% extends "main.html" %}
+{% block js_css %}
+<link rel="stylesheet" href="{{ static_url('editor/themes/default/default.css') }}" />
+<link rel="stylesheet" href="{{ static_url('editor/plugins/code/prettify.css') }}" />
+<script charset="utf-8" src="{{ static_url('editor/kindeditor.js') }}"></script>
+<script charset="utf-8" src="{{ static_url('editor/lang/zh_CN.js') }}"></script>
+<script charset="utf-8" src="{{ static_url('editor/plugins/code/prettify.js') }}"></script>
+<script>
+        KindEditor.ready(function(K) {
+            var d = {
+                cssPath : '{{ static_url("editor/plugins/code/prettify.css") }}',
+                uploadJson : '/tuxpy/upload.py',
+                fileManagerJson : '/tuxpy/file_manager.py',
+                allowFileManager : true,
+                afterCreate : function() {
+                    var self = this;
+                    K.ctrl(document, 13, function() {
+                        self.sync();
+                        K('form[name=page_form]')[0].submit();
+                    });
+                    K.ctrl(self.edit.doc, 13, function() {
+                        self.sync();
+                        K('form[name=page_form]')[0].submit();
+                    });
+            }}
+            var editor1 = K.create('textarea[name="page_content"]', d);
+            var editor2 = K.create('textarea[name="summary"]', d);
+            prettyPrint();
+    });
+
+</script>
+<style>
+    input{width:auto;}
+</style>
+{% end %}
+
+{% block r_main_title %}
+写新博客
+{% end %}
+{% block body %}
+<form name="page_form" method="POST">
+    <table id="page_table">
+        <tr>
+            <td>
+                <input placeholder="请输入博客标题" name="title" id="title" type='text' value="{{ blog.get('title', '') }}" style="padding-left:5px" />
+            </td>
+        <tr>
+        <tr>
+            <td>
+                <textarea  name="page_content" id="page_content">{{ blog.get('page_content', '') }}</textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input placeholder="请输入标签,多个标签以';'隔开"  name="tag" id="tag" value="{{ ';'.join(blog.get('tag', '')) }}" type='text' style="height:20px;margin-right:10px;width:600px"/>
+                <select name="sort">
+                    <option value="">请选择分类..</option>
+                    {% for sort in sort_list %}
+                    {% if sort['uuid'] == blog.get('sort', '') %}
+                        <option selected="selected" value="{{sort['uuid']}}">{{sort['name']}}</option>
+                    {% else %}
+                    <option value="{{sort['uuid']}}">{{sort['name']}}</option>
+                    {% end %}
+                    {% end %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="background-color:#ccc">
+                    <span class="page_table_title">日志摘要</span>
+                    <textarea  name="summary" id="summary">{{ blog.get('summary', '') }}</textarea>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" onclick="on()" id="is_top" name="is_top" value="{{blog.get('is_top', '') or '0'}}" />置顶
+            </td>
+        </tr>
+    </table>
+    <br />
+    <input type="submit" name="btn" value="发布" /> (提交快捷键: Ctrl + Enter)
+
+</form>
+<script>
+    var div = document.getElementById('side_bar_1');
+    div.className = 'now_title';
+    var is_top = document.getElementById('is_top');
+    if (is_top.value == '1'){
+        is_top.setAttribute('checked', '1');
+    }
+
+    function on(){
+        var is_top = document.getElementById('is_top');
+        if (is_top.value == '0'){
+            is_top.setAttribute('value', '1');
+        }
+        else{
+            is_top.setAttribute('value', '0');
+        }
+    }
+    
+</script>
+
+{% end %}

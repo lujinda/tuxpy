@@ -1,0 +1,37 @@
+body{
+    width:450px;
+    margin:10% auto;
+    background-color:#ddd;
+}
+#login_wrap{
+    float:left;
+    padding:20px 10px 20px 200px;
+    border:1px solid #aaa;
+    background-color:#fff;
+    background-image: url(../images/tux.png);
+    background-repeat:no-repeat;
+}
+
+li, td, th, input, select, textarea, p, div{
+    font-size:13px;
+    font-family:"Microsoft Yahei",Tahoma,Arial !important;
+}
+#login_user,#login_pass{
+    width:250px;
+    height:30px;
+    border:1px solid #e2e2d2;
+    padding:3px;
+    margin:4px 15px 4px 0px;
+    font-size:14px;
+}
+#login_btn{
+    width:70px;
+    height:40px;
+    background-color:#4aab03;
+    text-align:center;
+    font-size:14px;
+}
+
+ul,li{
+    list-style-type:none;
+}

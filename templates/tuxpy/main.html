@@ -1,0 +1,38 @@
+<!Doctype html>
+<html>
+    <head>
+        <meta http-equiv=Content-Type content="text/html;charset=utf-8" />
+        <link rel="stylesheet" href="{{static_url("tuxpy/css/style.css") }}" />
+        <script type='text/javascript' src="{{static_url("js/jquery-1.7.1.js")}}"></script>
+        <script type='text/javascript' src="{{static_url("js/common.js")}}"></script>
+        <link rel="icon" href="{{static_url("images/favicon.ico")}}" type="image/x-icon" />
+        <title>博客后台管理</title>
+        {% block js_css %}
+        {% end %}
+    </head>
+    <body>
+        {% block header %}
+        {% module admin_header('tuxpy/header.html') %}
+        {% end %}
+
+        <div id="main">
+            <div id="l_main">
+                {% include "left.html" %}
+            </div>
+            <div id="r_main">
+            <h1 style="font-size:14px;color:#555;padding-bottom:15px;border-bottom:1px solid #ddd">
+                {% block r_main_title %}
+                {% end %}
+            </h1>
+            {% block body %}{% end %}
+
+        {% block footer %}
+        {% end %}
+            </div>
+        </div>
+        <div id="footer">
+             &copy; 疯狂的小企鹅
+        </div>
+
+    </body>
+</html>

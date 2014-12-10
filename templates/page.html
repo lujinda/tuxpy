@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+{% block title %}
+{{ title }}
+{% end %}
+{% block body %}
+<div id="page">
+    <div id="page_title">
+    <h1>{{blog['title']}}</h1>
+    <div id="page_info">
+        <span>at: {{blog['date']}}</span>
+        <span>by: {{blog['author']}}</span>
+        <span>查看: {{blog['view']}}</span>
+        <span><a href="/tuxpy/write.py?uuid={{blog['uuid']}}">编辑</a></span>
+        <span style="float:right"><a href="/">首页</a>: <a href="/sort/{{blog['sort_alias']}}">{{blog['sort_name']}}</a></span>
+        
+    </div>
+    </div>
+    <div id="page_content">
+        {% raw blog['page_content'] %}
+    </div>
+    <a id="back" href="javascript:history.go(-1);">返回前页</a>
+</div>
+{% end %}

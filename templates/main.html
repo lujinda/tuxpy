@@ -1,0 +1,28 @@
+<!Doctype html>
+<html>
+    <head>
+        <meta http-equiv=Content-Type content="text/html;charset=utf-8" />
+        <link rel="icon" href="{{static_url("images/favicon.ico")}}" type="image/x-icon" />
+        <link rel="stylesheet" href="{{ static_url("css/style.css") }}" />
+        <link rel="stylesheet" href="{{ static_url("css/content.css") }}" />
+        <script type="text/javascript" src="{{ static_url("js/jquery-1.7.1.js") }}"></script>
+        <title>{% block title %}{% end %}</title>
+    </head>
+    <body>
+        {% block header %}
+        {% module header('header.html') %}
+        {% end %}
+        <div id="main">
+            <div id="l_main">
+                {% block body %}{% end %}
+            </div>
+            <div id="r_main">
+                {% include "right.html" %}
+            </div>
+        </div>
+        {% block footer %}
+        {% module footer('footer.html') %}
+        {% end %}
+
+    </body>
+</html>

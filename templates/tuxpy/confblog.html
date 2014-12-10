@@ -1,0 +1,29 @@
+{% extends "main.html" %}
+{% block body %}
+<style>
+    input{
+        width:30px;
+    }
+</style>
+{% include siteset_t.html%}
+<div id="siteset_configure">
+    <form method="POST" action="">
+        <ul>
+            <li>
+            <span>每页显示多少篇博客:</span> <input type='text' value="{{blog_options['page_limit']}}" name="page_limit" /></span>
+            </li>
+            <li>
+            <span>前多少个字符为摘要:</span> <input type='text' value="{{blog_options['start_n']}}" name="start_n" /></span>
+            </li>
+            <li>
+            <input type="submit" style="width:80px; margin-right:60px" value="修改" />
+            </li>
+        </ul>
+    </form>
+</div>
+<script>
+    var div = document.getElementById('title3');
+    div.className = 'now_title';
+</script>
+
+{% end %}

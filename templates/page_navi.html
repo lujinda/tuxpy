@@ -1,0 +1,38 @@
+<div id="page_navi">
+    {% if max_page < 10 %}
+        {% for page in range(1, max_page + 1) %}
+        <a id="p{{page}}" href="?page={{page}}">{{page}}</a>
+        {%  end %}
+        
+    {% elif now_page < 4  %}
+        <a href="?page=1" id="p1" title="首页">1</a>
+        {% for page in range(2 , 6) %}
+        <a id="p{{page}}" href="?page={{page}}">{{page}}</a>
+        {% end %}
+        ...
+        <a id="p{{max_page}}" href="?page={{max_page}}" title="尾页">{{max_page}}</a>
+        {% elif (max_page - now_page) >= max_page/2 or  2 < (max_page - now_page) <= max_page/2 %}
+        <a id="p1" href="?page=1" title="首页">1</a>
+        ...
+        {% for page in range(now_page - 2 , now_page + 4) %}
+            {% if page == max_page %}
+               {% break %}
+            {% end %}
+            <a id="p{{ page }}" href="?page={{page}}">{{page}}</a>
+        {% end %}
+        ...
+        <a id="p{{max_page}}" href="?page={{max_page}}" title="尾页">{{max_page}}</a>
+    {% else %}
+        <a id="p1" href="?page=1" title="首页">1</a>
+        ...
+        {% for page in range(now_page - 4 , max_page) %}
+        <a id="p{{page}}" href="?page={{page}}">{{page}}</a>
+        {% end %}
+        <a id="p{{max_page}}" href="?page={{max_page}}" title="尾页">{{max_page}}</a>
+        
+    {% end %}
+</div>
+<script>
+    var a = document.getElementById('p{{now_page}}');
+    a.className = 'now_a_page';
+</script>

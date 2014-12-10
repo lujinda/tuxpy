@@ -1,0 +1,54 @@
+{% extends "main.html" %}
+{% block r_main_title %}
+分类管理
+{% end %}
+{% block body %}
+<form name="sort_msg_form" method="POST">
+<div id="sort_msg"></div>
+</form>
+<table class="page_sort_table">
+    <thead>
+        <tr>
+        <th width="30%">名称</th>
+        <th width="40%">别名</th>
+        <th width="10%">查看</th>
+        <th width="10%">日志</th>
+        <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sort in sort_list %}
+        <tr>
+            <td><a style="display:block" name="name" id="{{sort['uuid']}}" OnClick="javascript:show(this, 'sort_msg');">{{sort['name']}}</a></td>
+            <td><a style="display:block" name="alias" id="{{sort['uuid']}}" OnClick="javascript:show(this,'sort_msg');">{{sort['alias']}}</a></td>
+            <td><a target="_blank" href="/sort/{{sort['alias']}}"><img src="{{static_url('tuxpy/images/see.gif')}}"/></a></td>
+            <td>{{sort['count']}}</td>
+            <td><a href="/tuxpy/sort.py?del_sort={{sort['uuid']}}">删除</a></td>
+        </tr>
+        {% end %}
+    </tbody>
+</table>
+<form method="POST">
+    <fieldset style="width:220px;border:1px solid #ccc">
+        <legend>添加新分类</legend>
+        <div id="sort_add">
+            <li>
+            <span>名称:</span> <input name="name" />
+            </li>
+            <li>
+            <span>别名:</span> <input name="alias"/>
+            </li>
+            <li>
+            <input class="btn" type="submit" style="width:80px;margin-left:40px;" value="添加">
+            </li>
+        </div>
+    </fieldset>
+</form>
+            <li style="color:red;margin-top:5px">{{mess}}</li>
+
+<script>
+    var div = document.getElementById('side_bar_3');
+    div.className = 'now_title';
+</script>
+
+{% end %}

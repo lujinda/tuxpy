@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+{% block body %}
+{% include siteset_t.html%}
+<div id="siteset_configure">
+    <form method="POST" action="">
+        <ul>
+            <li>
+            <span>站点标题:</span> <input type='text' value="{{site_options['site_name']}}" name="site_name" /></span>
+            </li>
+            <li>
+            <span style="vertical-align:top">站点副标题:</span> <textarea name="site_name_sub" style="height:100px;resize:none">{{site_options['site_name_sub']}}</textarea></span>
+            </li>
+            <li>
+            <span>站点地址:</span> <input type='text' value="{{site_options['site_host']}}" name="site_host" />
+            </li>
+            <li>
+            <span>联系邮箱:</span> <input type='email' value="{{site_options['email']}}" name="email" />
+            </li>
+            <li>
+            <input type="submit" style="width:80px;margin-right:20px" value="保存" />
+            </li>
+        </ul>
+    </form>
+</div>
+<script>
+    var div = document.getElementById('title1');
+    div.className = 'now_title';
+</script>
+
+{% end %}

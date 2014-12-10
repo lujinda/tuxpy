@@ -1,0 +1,17 @@
+{% extends "main.html" %}
+{% block title %}
+{{site_options['site_name']}}
+{% end %}
+{% block body %}
+<div id="site_info">
+    <ul>
+        <li>网站名: {{ site_options['site_name']}}</li>
+        <li>主机地址: {{ site_options['site_host']}}</li>
+        <li>服务器系统: {{server_info['os']}}</li>
+        <li>mongodb版本: {{ server_info['version'] }}</li>
+        <li>python版本: {{server_info['python']}}</li>
+        <li>服务器时间: {{server_info['time']}}</li>
+    </ul>
+</div>
+
+{% end %}

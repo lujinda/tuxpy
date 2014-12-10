@@ -1,0 +1,38 @@
+{% extends "main.html" %}
+{% block title %}
+{{ title }}
+{% end %}
+{% block body %}
+<ul id="main_content">
+    {% for blog in blog_list %}
+    <li>
+    <div class="content_info">
+        <div class="content_title">
+            <div class="blog_title">
+                <a onclick = "open_page()" href="/page/{{blog['uuid']}}">
+                    <strong>{{ blog['title'] }}</strong></a>
+            </div>
+            <div class="content_title_r"> 
+                <span style="padding-left:20px;color:#666" class="blog_date">{{blog ['date']}}</span>
+                <span style="float:right">
+                分类: <a href="/sort/{{ blog['sort_alias'] }}">{{ blog['sort_name'] }}</a>
+                查看: {{ blog['view'] }}
+            </span>
+            </div>
+        </div>
+        <div class="summary">
+            {% raw blog['summary'] %}
+        </div>
+    </div>
+    </li>
+    {% end %}
+</ul>
+{% include 'page_navi.html' %}
+{% end %}
+<script type="text/javascript">
+    function open_page(){
+        var url = this.href;
+        url.innerHtml = url;
+        return false;
+    }
+</script>

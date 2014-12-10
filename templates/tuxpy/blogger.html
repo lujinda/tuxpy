@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+{% block body %}
+{% include siteset_t.html%}
+<div id="siteset_blogger">
+    <form method="POST" action="">
+        <ul>
+            <li>
+            <span>旧用户名：</span><input name="user_old" type="text" value="{{username}}" />
+            </li>
+            <li>
+            <span>新用户名：</span><input name="user_new" type="text" value="{{username}}" />
+            </li>
+            <li>
+            <span>旧密码：</span><input name="pass_old" type="password" />
+            </li>
+            <li>
+            <span>新密码：</span><input name="pass_new" type="password" />
+            </li>
+            <li>
+            <input type="submit" style="width:80px;margin-right:60px" value="修改" />
+            </li>
+        </ul>
+    </form>
+
+<script>
+    var div = document.getElementById('title2');
+    div.className = 'now_title';
+</script>
+
+{% end %}
