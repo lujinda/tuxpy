@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-09 12:14:09
+# Last modified   : 2014-12-12 21:02:35
 # Filename        : admin/write.py
 # Description     : 
 from tornado.web import  authenticated
@@ -18,7 +18,6 @@ class WriteHandler(BaseHandler):
     def get(self):
         uuid = self.get_argument('uuid', '')
         blog = get_blog(uuid, is_edit = True)
-        print blog
         self.render('tuxpy/write.html', sort_list = get_sort_list(), blog = blog
                 )
 
@@ -39,4 +38,5 @@ class WriteHandler(BaseHandler):
         mess = write_blog(title=title, page_content=page_content, summary=summary, 
                 tag=tag, sort=sort, author=author, uuid=uuid, is_top = is_top
                 )
+        self.redirect('/tuxpy/listpage.py')
 

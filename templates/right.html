@@ -1,2 +1,28 @@
 <ul id="main_sider">
+    <li>
+        <div class="sider_title">最新博客</div>
+        <div class="sider_content">
+            {% for _blog in blog_list_new %}
+            <a href="/page/{{_blog['uuid']}}">{{ _blog['title'] }}</a>
+            {% end %}
+        </div>
+    </li>
+
+    <li>
+        <div class="sider_title">最热博客</div>
+        <div class="sider_content">
+            {% for _blog in blog_list_hot %}
+            <a href="/page/{{_blog['uuid']}}">{{ _blog['title'] }}</a>
+            {% end %}
+        </div>
+    </li>
+
+    <li>
+        <div class="sider_title">随机博客</div>
+        <div class="sider_content">
+            {% for _blog in blog_list_rand %}
+            <a href="/page/{{_blog['uuid']}}">{{ _blog['title'] }}</a>
+            {% end %}
+        </div>
+    </li>
 </ul>

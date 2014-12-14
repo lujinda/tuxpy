@@ -20,9 +20,9 @@
     <tbody>
         {% for blog in blog_list %}
         <tr>
-            <td><input name="blog_checkbox" type="checkbox" style="width:5%" value="{{blog['uuid']}}"</input></td>
-            <td><a href="/tuxpy/write.py?uuid={{blog['uuid']}}">{{blog['title']}}</a></td>
-            <td><a href="/page/{{blog['uuid']}}"><img src="{{static_url('tuxpy/images/see.gif')}}" /></a></td>
+            <td><input  name="blog_checkbox" type="checkbox" style="width:5%" value="{{blog['uuid']}}"></input></td>
+            <td>{% if blog.get('is_top', '') == '1' %}<strong style="color:red">↑</strong>{% end %}<a href="/tuxpy/write.py?uuid={{blog['uuid']}}">{{blog['title']}}</a></td>
+            <td><a href="/page/{{blog['uuid']}}" target="_blank"><img src="{{static_url('tuxpy/images/see.gif')}}" /></a></td>
             <td><a href="/sort/{{blog['sort_alias']}}">{{blog['sort_name']}}</a></td>
             <td>{{blog['date']}}</td>
             <td>#</td>
@@ -31,7 +31,19 @@
         {% end %}
     </tbody>
 </table>
-<li style="color:#666;font-size:14px">选中项: <a href="javascript:document.page_msg_form.action='?del=1';document.page_msg_form.submit();">删除</a></li>
+<li style="color:#666;font-size:14px">选中项: 
+<a href="javascript:doBlog('del')">删除</a>
+<a href="javascript:doBlog('top')">置顶</a>
+<a href="javascript:doBlog('notop')">取消置顶</a>
+<select name="sort" onchange="move_blog(this)">
+    <option value="-1">移动到分类..</option>
+    {% for sort in sort_list %}
+    <option value="{{sort['uuid']}}">{{sort['name']}}</option>
+    {% end %}
+    <option value="">未分类</option>
+
+</select>
+</li>
 
 </form>
         <li style="color:red;margin-top:5px">{{mess}}</li>
@@ -39,6 +51,21 @@
 <script>
     var div = document.getElementById('side_bar_2');
     div.className = 'now_title';
+
+    
+    function doBlog(opera){
+        if (opera == 'del' && !confirm('你确定要删除所选项')){
+            return;
+        }
+        document.page_msg_form.action="?" + opera + '=1';
+        document.page_msg_form.submit();
+    }
+    function move_blog(obj){
+        var sort_uuid = obj.value;
+        if (sort_uuid == '-1')return;
+        document.page_msg_form.action="?move=1";
+        document.page_msg_form.submit();
+    }
 </script>
 
 {% end %}

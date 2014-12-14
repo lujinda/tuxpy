@@ -23,7 +23,7 @@
             <td><a style="display:block" name="alias" id="{{sort['uuid']}}" OnClick="javascript:show(this,'sort_msg');">{{sort['alias']}}</a></td>
             <td><a target="_blank" href="/sort/{{sort['alias']}}"><img src="{{static_url('tuxpy/images/see.gif')}}"/></a></td>
             <td>{{sort['count']}}</td>
-            <td><a href="/tuxpy/sort.py?del_sort={{sort['uuid']}}">删除</a></td>
+            <td><a href="/tuxpy/listsort.py?del_sort={{sort['uuid']}}">删除</a></td>
         </tr>
         {% end %}
     </tbody>

@@ -38,10 +38,9 @@ ul{
     width:700px;
 }
 #r_main{
-    background-color:blue;
-    width:160px;
+    width:180px;
     float:right;
-    height:300px;
+    overflow:auto;
 }
 
 #main_content li{
