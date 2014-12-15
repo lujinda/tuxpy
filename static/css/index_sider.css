@@ -1,6 +1,7 @@
 #main_sider li{
     background-color:#fff;
-    margin-bottom:40px;
+    margin-bottom:5px;
+    padding:10px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
 }
 #main_sider li:hover{
@@ -8,10 +9,10 @@
 }
 #main_sider .sider_title{
     margin:0px;
-    padding:5px;
+    padding:10px 10px;
     font-weight:bold;
     font-size:16px;
-    border-bottom:1px solid #ccc;
+    border-bottom:2px solid #ccc;
 }
 #main_sider .sider_content{
     padding:7px;
@@ -21,8 +22,10 @@
     text-decoration:none;
     line-height:20px;
     font-size:14px;
-    color:#444;
+    padding:3px;
+    color:#09c;
+    border-bottom:1px solid #eee;
 }
 #main_sider a:hover{
-    color:#09c;
+    color:#444;
 }
