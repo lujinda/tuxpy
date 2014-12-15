@@ -1,13 +1,36 @@
 body{
     font-family:arial,helvetica,sans-serif;
     background-color: #EFEFEF;
+    margin:0px;
     background-image:url(../images/bg.png);
     background-repeat:no-repeat;
-    background-position:top right;
+    background-position:right 40px;
     background-attachment: fixed;
 }
 ul{
     list-style-type: none;
+}
+#header{
+    width:100%;
+    background-color:#ccc;
+    height:30px;
+    border-bottom:1px solid #fff;
+
+}
+#header div{
+    text-align:right;
+    width:900px;
+    margin:0px auto;
+    padding:5px 0px;
+}
+#header a{
+    color:#666;
+    font-size:14px;
+    padding:5px;
+    text-decoration:none;
+}
+#header a:hover{
+    background-color:#fff;
 }
 #top{
     margin:10px auto;
@@ -38,7 +61,7 @@ ul{
     width:700px;
 }
 #r_main{
-    width:180px;
+    width:190px;
     float:right;
     overflow:auto;
 }

@@ -2,8 +2,8 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-01 23:26:45
-# Filename        : base.py
+# Last modified   : 2014-12-15 20:34:19
+# Filename        : admin/base.py
 # Description     : 
 from tornado.web import RequestHandler
 from do import check_user_pass, enc_password

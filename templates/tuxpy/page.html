@@ -32,6 +32,8 @@
     </tbody>
 </table>
 <li style="color:#666;font-size:14px">选中项: 
+<a href="javascript:checkAll(true)">全选</a>
+<a href="javascript:checkAll(false)">全不选</a>
 <a href="javascript:doBlog('del')">删除</a>
 <a href="javascript:doBlog('top')">置顶</a>
 <a href="javascript:doBlog('notop')">取消置顶</a>
@@ -65,6 +67,14 @@
         if (sort_uuid == '-1')return;
         document.page_msg_form.action="?move=1";
         document.page_msg_form.submit();
+    }
+    function checkAll(s){
+        var checkbox_list = document.getElementsByName('blog_checkbox');
+        var len = checkbox_list.length;
+        for (i=0; i<len; i++)
+        {
+            checkbox_list[i].checked = s;
+        }
     }
 </script>
 

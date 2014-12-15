@@ -10,7 +10,9 @@
         <span>at: {{blog['date']}}</span>
         <span>by: {{blog['author']}}</span>
         <span>查看: {{blog['view']}}</span>
+        {% if current_user %}
         <span><a href="/tuxpy/write.py?uuid={{blog['uuid']}}">编辑</a></span>
+        {% end %}
         <span style="float:right"><a href="/">首页</a>: <a href="/sort/{{blog['sort_alias']}}">{{blog['sort_name']}}</a></span>
         
     </div>

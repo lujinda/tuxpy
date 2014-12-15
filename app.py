@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-09 12:45:00
+# Last modified   : 2014-12-15 22:09:37
 # Filename        : app.py
 # Description     : 
 
@@ -17,11 +17,11 @@ from admin import ListPageHandler
 from files import FilesHandler
 from page.index import IndexHandler
 from page.sort import SortPageHandler 
+from page.search import SearchHandler
 from page.page import PageHandler
 from os import path
 
-from module import AdminHeaderModule, HeaderModule, FooterModule
-
+from module import AdminHeaderModule, HeaderModule, FooterModule, SiderHandlerModule
 class TuxpyApplication(Application):
     def __init__(self):
         handlers = [
@@ -40,6 +40,7 @@ class TuxpyApplication(Application):
                 (r'/files/(.+)', FilesHandler),
                 (r'/sort/(.+)?', SortPageHandler),
                 (r'/page/(.+)?', PageHandler),
+                (r'/search/(.+)?', SearchHandler),
                 ]
         settings = {
                 'template_path': path.join(path.dirname(__file__),
@@ -48,7 +49,9 @@ class TuxpyApplication(Application):
                     'static'),
                 'cookie_secret':get_uuid(),
                 'login_url':'/tuxpy/login.py',
-                'ui_modules': {'admin_header':AdminHeaderModule,'header':HeaderModule, 'footer': FooterModule},
+                'ui_modules': {'admin_header':AdminHeaderModule,
+                    'header':HeaderModule, 'footer': FooterModule,
+                    'right':SiderHandlerModule},
                 'debug':True,
                 }
         Application.__init__(self, handlers, **settings)
