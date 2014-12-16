@@ -2,8 +2,8 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-15 21:26:25
-# Filename        : page/do.py
+# Last modified   : 2014-12-16 15:42:04
+# Filename        : do.py
 # Description     : 
 from data.db import db
 from data.do import get_blog_options
@@ -55,7 +55,6 @@ def get_blog_count(condition):
 
 class PageListHandler(RequestHandler): # 完成一些共用的列出日志的工作
     # 主要完成一些博客参数的获取，比如像当前怘，第页的限制, 和最大页
-
     def render_page(self, condition, title):
         now_page = int(self.get_argument('page', 1))
         page_limit = get_blog_options()['page_limit']
@@ -87,4 +86,7 @@ def get_blog_list_rand(): # 随机获取博客数，需要改进
     blog_list = list(db.blog.find())
     random.shuffle(blog_list)
     return blog_list[:5]
+
+def get_tag_b_uuid(tag):
+    return db.tag.find_one({'name': tag})['b_uuid']
 

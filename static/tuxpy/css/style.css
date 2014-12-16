@@ -217,3 +217,11 @@ table{
 #summary{
     height:200px;
 }
+#tag_main a{
+    color:#09c;
+    font-size:14px;
+    text-decoration:none
+}
+#tag_main a:hover{
+    color:#666;
+}

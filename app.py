@@ -2,8 +2,8 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-15 22:09:37
-# Filename        : app.py
+# Last modified   : 2014-12-16 16:45:07
+# Filename        : ../../app.py
 # Description     : 
 
 from tornado.web import Application
@@ -14,9 +14,11 @@ from admin import WriteHandler, ListSortHandler
 from admin import UploadHandler
 from admin.do import get_uuid
 from admin import ListPageHandler
+from admin import ListTagHandler
 from files import FilesHandler
 from page.index import IndexHandler
 from page.sort import SortPageHandler 
+from page.tag import TagHandler
 from page.search import SearchHandler
 from page.page import PageHandler
 from os import path
@@ -37,10 +39,12 @@ class TuxpyApplication(Application):
                 (r'/tuxpy/listpage.py', ListPageHandler),
                 (r'/tuxpy/listsort.py', ListSortHandler),
                 (r'/tuxpy/upload.py', UploadHandler),
+                (r'/tuxpy/listtag.py', ListTagHandler),
                 (r'/files/(.+)', FilesHandler),
                 (r'/sort/(.+)?', SortPageHandler),
                 (r'/page/(.+)?', PageHandler),
                 (r'/search/(.+)?', SearchHandler),
+                (r'/tag/(.+)?', TagHandler), # 这里的url参数是tag名字，不是uuid
                 ]
         settings = {
                 'template_path': path.join(path.dirname(__file__),

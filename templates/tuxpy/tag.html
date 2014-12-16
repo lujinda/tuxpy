@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+{% block r_main_title %}
+    所有标签
+{% end %}
+{% block body %}
+<div id="tag_main">
+    {% for tag in tag_list %}
+    <a href="/tag/{{tag['name']}}" target="_blank">{{tag['name']}}</a>
+    {% end %}
+</div>
+<script>
+    var div = document.getElementById('side_bar_4');
+    div.className = 'now_title';
+</script>
+{% end %}

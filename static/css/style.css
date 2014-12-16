@@ -41,6 +41,10 @@ ul{
     float:left;
     margin-right:10px;
 }
+#top #top_name a{
+    color:#000;
+    text-decoration:none;
+}
 #top_logo img{
     height: 100px;
     border:0;
@@ -152,3 +156,4 @@ ul{
     color:#09c;
     border-bottom:3px solid #09c;
 }
+

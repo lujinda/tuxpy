@@ -13,8 +13,7 @@
     box-shadow:4px 4px 8px rgba(0, 0, 0, 0.2);
     margin-top:0px;
     border-radius:10px;
-    -moz-border-radius:10px;
-    margin-bottom:10px;
+    -moz-border-radius:10px; margin-bottom:10px;
     border-top:3px solid #09c;
     overflow: auto;
     padding:15px 30px 30px 30px;
@@ -58,4 +57,11 @@
 
 #page #page_content{
     padding:20px 0px;
+}
+#page #page_tag{
+    font-size:14px;
+}
+#page #page_tag a{
+    color:#09c;
+    text-decoration:none;
 }

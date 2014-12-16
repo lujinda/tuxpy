@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-14 23:35:10
+# Last modified   : 2014-12-16 18:57:55
 # Filename        : admin/do.py
 # Description     : 
 from data import db
@@ -12,8 +12,12 @@ import time
 from bson import binary
 import re
 
+def get_tag_list():
+    return db.tag.find()
+
 def get_sort_page_count(uuid):
     return db.blog.find({'sort': uuid}).count()
+
 
 def get_sort_list():
     sort_list = []
@@ -89,7 +93,22 @@ def upload_file(filename, body):
     return '/files/%s' % (url_filename,)
 
 
+def write_tag(uuid, tag, old_tag): # tag是指用户传入的标签
+    deleted_tag = list(set(old_tag) - set(tag)) # 算出有哪些标签，被删掉了
+    for t in deleted_tag: # 在被去掉的标签中，删除日志uuid
+        db.tag.update({'name':t},
+                {"$pull":{"b_uuid":uuid}}
+                )
+
+    for t in list(set(tag) - set(old_tag)): # 那些没有改动的标签就不需要再添加它了
+        if db.tag.find_one({'name':t}):
+            db.tag.update({'name': t},
+                {"$addToSet":{"b_uuid":uuid}})
+        else:
+            db.tag.insert({'name':t,'b_uuid':[uuid]})
+
 def write_blog(**blog):
+    old_tag = blog.pop('old_tag')
     if not blog['uuid']: # 如果没有uuid，则表示是新的
         blog['reply'] = []
         blog['view'] = 0
@@ -100,7 +119,8 @@ def write_blog(**blog):
     else:
         db.blog.update({'uuid': blog['uuid']},
                 {"$set": blog})
-
+    
+    write_tag(blog['uuid'], blog['tag'], old_tag)
 
 def get_blog_list(condition={}):
     blog_list = []
@@ -127,4 +147,5 @@ def notop_blog(blog_uuid):
             {"$set":{'is_top': ''}}
             )
        
+
 

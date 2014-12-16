@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-12 21:02:35
+# Last modified   : 2014-12-16 15:05:25
 # Filename        : admin/write.py
 # Description     : 
 from tornado.web import  authenticated
@@ -35,8 +35,9 @@ class WriteHandler(BaseHandler):
         sort = self.get_argument('sort', '')
         author = self.current_user
         uuid = self.get_argument('uuid', '')
+        old_tag = get_blog(uuid).get('tag', []) # 记录着原来的旧标签，如果没有的话，则表示为空
         mess = write_blog(title=title, page_content=page_content, summary=summary, 
-                tag=tag, sort=sort, author=author, uuid=uuid, is_top = is_top
+                old_tag = old_tag, tag = tag, sort=sort, author=author, uuid=uuid, is_top = is_top
                 )
         self.redirect('/tuxpy/listpage.py')
 

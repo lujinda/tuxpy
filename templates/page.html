@@ -20,6 +20,17 @@
     <div id="page_content">
         {% raw blog['page_content'] %}
     </div>
+    <p>
+    <div id="page_tag">
+        {% if blog.get('tag', '') %}
+            标签: 
+        {% for t in blog['tag'] %}
+            <a href="/tag/{{t}}">{{t}}</a>
+        {% end %}
+        {% end %}
+    </div>
+
+    </p>
     <a id="back" href="javascript:history.go(-1);">返回前页</a>
 </div>
 {% end %}
