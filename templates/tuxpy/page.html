@@ -20,7 +20,7 @@
     <tbody>
         {% for blog in blog_list %}
         <tr>
-            <td><input  name="blog_checkbox" type="checkbox" style="width:5%" value="{{blog['uuid']}}"></input></td>
+            <td><input  name="blog_checkbox" type="checkbox" style="width:20px" value="{{blog['uuid']}}"></input></td>
             <td>{% if blog.get('is_top', '') == '1' %}<strong style="color:red">↑</strong>{% end %}<a href="/tuxpy/write.py?uuid={{blog['uuid']}}">{{blog['title']}}</a></td>
             <td><a href="/page/{{blog['uuid']}}" target="_blank"><img src="{{static_url('tuxpy/images/see.gif')}}" /></a></td>
             <td><a href="/sort/{{blog['sort_alias']}}">{{blog['sort_name']}}</a></td>

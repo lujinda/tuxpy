@@ -70,6 +70,8 @@ ul{
     list-style-type:none;
     background-color:#fff;
     box-shadow:4px 4px 4px rgba(0, 0, 0, 0.2);
+    border-radius:10px;
+    -moz-border-radius:10px;
     padding:2px 0px;
     border-left:4px solid #fff;
     margin-bottom:35px;
