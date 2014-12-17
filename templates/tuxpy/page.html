@@ -5,6 +5,26 @@
 {% block body %}
 
 <form name="page_msg_form" method="POST">
+    <div class="page_sort_see">
+        <a id="_page_all" href="?">全部</a>
+        <a id="_page_sort" onclick="filterPage(event, 'page_sort')" href="">分类</a>
+        <a id="_page_tag" onclick="filterPage(event, 'page_tag')" href="">标签</a>
+    </div>
+    <div id="page_filter">
+    <div name="page_filter_title" id="page_sort"  href="" style="display:none">
+        <strong>分类: </strong>
+        {% for sort in sort_list %}
+        <a id="_{{sort['uuid']}}" href="?sort={{sort['uuid']}}">{{sort['name']}}</a>
+        {% end %}
+        <a id="_" href="?sort=">未分类</a>
+    </div>
+    <div name="page_filter_title" id="page_tag" href="" style="display:none">
+        <strong>标签: </strong>
+        {% for tag in tag_list %}
+        <a id="_{{tag['name']}}" href="?tag={{tag['name']}}">{{tag['name']}}</a>
+        {% end %}
+    </div>
+    </div>
 <table class="page_sort_table">
     <thead>
         <tr>
@@ -55,28 +75,15 @@
     var div = document.getElementById('side_bar_2');
     div.className = 'now_title';
 
-    
-    function doBlog(opera){
-        if (opera == 'del' && !confirm('你确定要删除所选项')){
-            return;
-        }
-        document.page_msg_form.action="?" + opera + '=1';
-        document.page_msg_form.submit();
+    var filter_obj = document.getElementById("{{filter_id}}");
+    if (filter_obj){
+        filter_obj.setAttribute("style", "font-weight:bold;color:#f00;");
+        filter_obj.parentNode.setAttribute("style", "display:block");
+        
+    }else{
+    document.getElementById("_page_all").className = 'page_sort_now'
     }
-    function move_blog(obj){
-        var sort_uuid = obj.value;
-        if (sort_uuid == '-1')return;
-        document.page_msg_form.action="?move=1";
-        document.page_msg_form.submit();
-    }
-    function checkAll(s){
-        var checkbox_list = document.getElementsByName('blog_checkbox');
-        var len = checkbox_list.length;
-        for (i=0; i<len; i++)
-        {
-            checkbox_list[i].checked = s;
-        }
-    }
+
 </script>
 
 {% end %}

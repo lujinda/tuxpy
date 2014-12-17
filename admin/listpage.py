@@ -2,27 +2,39 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-17 19:00:29
+# Last modified   : 2014-12-17 23:39:42
 # Filename        : admin/listpage.py
 # Description     : 
 from base import BaseHandler
-from page.do import get_blog_list, get_blog_count
+from page.do import get_blog_list, get_blog_count, get_tag_b_uuid
 from .do import del_blog
-from .do import get_sort_list, move_blog, top_blog, notop_blog
+from .do import get_sort_list, move_blog, top_blog, notop_blog, get_tag_list
 
 class ListPageHandler(BaseHandler):
     def get(self, mess=''):
-        self.list_blog(mess)
+        filter_id, condition = self.make_title_condition() # filter_id 用来获取筛选的那个分类的id值，根据这个id值分析出它的父节点，并把它显示
+        self.list_blog(condition = condition, mess = mess, filter_id = filter_id)
 
-    def list_blog(self, mess, condition = {}):
+    def make_title_condition(self):
+        if 'sort' in self.request.arguments:
+            sort_uuid = self.get_argument('sort', '')
+            return '_' + sort_uuid, {'sort': sort_uuid}
+
+        if 'tag' in self.request.arguments:
+            tag_name = self.get_argument('tag', '')
+            blog_uuid_list = get_tag_b_uuid(tag_name)
+            return '_' + tag_name, {'uuid': {"$in": blog_uuid_list}}
+
+        return None, {}
+
+    def list_blog(self, mess, condition = {}, filter_id=''):
         now_page = int(self.get_argument('page', 1))
         max_page = (int(get_blog_count(condition)) - 1 ) / 15
         blog_list = get_blog_list(condition,
                 now_page=now_page, page_limit = 15)
         self.render('tuxpy/page.html', blog_list = blog_list,
-                sort_list = get_sort_list(), mess = mess,
-                now_page = now_page, max_page = max_page)
-
+                sort_list = get_sort_list(), mess = mess,filter_id = filter_id,
+                now_page = now_page, max_page = max_page, tag_list = get_tag_list())
 
     def post(self):
         blog_uuid_list = self.get_arguments('blog_checkbox')

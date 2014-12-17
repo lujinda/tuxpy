@@ -19,8 +19,8 @@
     <tbody>
         {% for sort in sort_list %}
         <tr>
-            <td><a style="display:block" name="name" id="{{sort['uuid']}}" OnClick="javascript:show(this, 'sort_msg');">{{sort['name']}}</a></td>
-            <td><a style="display:block" name="alias" id="{{sort['uuid']}}" OnClick="javascript:show(this,'sort_msg');">{{sort['alias']}}</a></td>
+            <td><a href="#" style="display:block" name="name" id="{{sort['uuid']}}" OnClick="javascript:show(event, this, 'sort_msg');">{{sort['name']}}</a></td>
+            <td><a href="#" style="display:block" name="alias" id="{{sort['uuid']}}" OnClick="javascript:show(event, this,'sort_msg');">{{sort['alias']}}</a></td>
             <td><a target="_blank" href="/sort/{{sort['alias']}}"><img src="{{static_url('tuxpy/images/see.gif')}}"/></a></td>
             <td>{{sort['count']}}</td>
             <td><a href="/tuxpy/listsort.py?del_sort={{sort['uuid']}}">删除</a></td>
