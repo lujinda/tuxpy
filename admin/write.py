@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-16 15:05:25
+# Last modified   : 2014-12-16 19:29:51
 # Filename        : admin/write.py
 # Description     : 
 from tornado.web import  authenticated

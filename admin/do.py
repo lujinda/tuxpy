@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-16 18:57:55
+# Last modified   : 2014-12-17 18:44:45
 # Filename        : admin/do.py
 # Description     : 
 from data import db
@@ -122,13 +122,6 @@ def write_blog(**blog):
     
     write_tag(blog['uuid'], blog['tag'], old_tag)
 
-def get_blog_list(condition={}):
-    blog_list = []
-    for blog in db.blog.find(condition).sort([('is_top', -1), ('date', -1)]):
-        blog = deal_blog(blog)
-        blog_list.append(blog)
-
-    return blog_list
 
 def del_blog(blog_uuid):
     db.blog.remove({'uuid': blog_uuid})

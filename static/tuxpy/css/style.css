@@ -225,3 +225,14 @@ table{
 #tag_main a:hover{
     color:#666;
 }
+#page_navi{
+    font-size:14px;
+}
+#page_navi a{
+    border:1px solid #666;
+    padding:3px;
+    background-color:#ccc;
+}
+#page_navi .now_a_page{
+    background-color:#fff;
+}

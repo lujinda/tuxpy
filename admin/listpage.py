@@ -2,17 +2,27 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-12 20:57:59
+# Last modified   : 2014-12-17 19:00:29
 # Filename        : admin/listpage.py
 # Description     : 
 from base import BaseHandler
-from .do import get_blog_list, del_blog
+from page.do import get_blog_list, get_blog_count
+from .do import del_blog
 from .do import get_sort_list, move_blog, top_blog, notop_blog
 
 class ListPageHandler(BaseHandler):
     def get(self, mess=''):
-        blog_list = get_blog_list()
-        self.render('tuxpy/page.html', blog_list = blog_list, sort_list = get_sort_list(), mess = mess)
+        self.list_blog(mess)
+
+    def list_blog(self, mess, condition = {}):
+        now_page = int(self.get_argument('page', 1))
+        max_page = (int(get_blog_count(condition)) - 1 ) / 15
+        blog_list = get_blog_list(condition,
+                now_page=now_page, page_limit = 15)
+        self.render('tuxpy/page.html', blog_list = blog_list,
+                sort_list = get_sort_list(), mess = mess,
+                now_page = now_page, max_page = max_page)
+
 
     def post(self):
         blog_uuid_list = self.get_arguments('blog_checkbox')
