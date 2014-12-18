@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-17 23:39:42
+# Last modified   : 2014-12-18 11:53:43
 # Filename        : admin/listpage.py
 # Description     : 
 from base import BaseHandler
@@ -12,29 +12,30 @@ from .do import get_sort_list, move_blog, top_blog, notop_blog, get_tag_list
 
 class ListPageHandler(BaseHandler):
     def get(self, mess=''):
-        filter_id, condition = self.make_title_condition() # filter_id 用来获取筛选的那个分类的id值，根据这个id值分析出它的父节点，并把它显示
-        self.list_blog(condition = condition, mess = mess, filter_id = filter_id)
+        page_navi_sort, filter_id, condition = self.make_title_condition() # filter_id 用来获取筛选的那个分类的id值，根据这个id值分析出它的父节点，并把它显示
+        self.list_blog(condition = condition, mess = mess, filter_id = filter_id, page_navi_sort =  page_navi_sort) # page_navi_sort 主要用来避免分类过滤时的选页
 
     def make_title_condition(self):
         if 'sort' in self.request.arguments:
-            sort_uuid = self.get_argument('sort', '')
-            return '_' + sort_uuid, {'sort': sort_uuid}
+            sort_uuid = self.get_argument('sort', '').replace(' ', '+')
+            return "&sort=%s" %(sort_uuid,), '_' + sort_uuid, {'sort': sort_uuid}
 
         if 'tag' in self.request.arguments:
             tag_name = self.get_argument('tag', '')
             blog_uuid_list = get_tag_b_uuid(tag_name)
-            return '_' + tag_name, {'uuid': {"$in": blog_uuid_list}}
+            return "&tag=%s" % (tag_name, ), '_' + tag_name, {'uuid': {"$in": blog_uuid_list}}
 
-        return None, {}
+        return '', None, {}
 
-    def list_blog(self, mess, condition = {}, filter_id=''):
+    def list_blog(self, mess, condition = {}, filter_id='', page_navi_sort=''):
         now_page = int(self.get_argument('page', 1))
         max_page = (int(get_blog_count(condition)) - 1 ) / 15
         blog_list = get_blog_list(condition,
                 now_page=now_page, page_limit = 15)
         self.render('tuxpy/page.html', blog_list = blog_list,
                 sort_list = get_sort_list(), mess = mess,filter_id = filter_id,
-                now_page = now_page, max_page = max_page, tag_list = get_tag_list())
+                now_page = now_page, max_page = max_page, tag_list = get_tag_list(),
+                page_navi_sort = page_navi_sort)
 
     def post(self):
         blog_uuid_list = self.get_arguments('blog_checkbox')

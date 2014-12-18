@@ -231,6 +231,7 @@ table{
 }
 #page_navi{
     font-size:14px;
+    margin-bottom:5px;
 }
 #page_navi a{
     border:1px solid #666;

@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-17 18:40:10
+# Last modified   : 2014-12-18 11:52:10
 # Filename        : page/do.py
 # Description     : 
 from data.db import db
@@ -61,7 +61,7 @@ class PageListHandler(RequestHandler): # 完成一些共用的列出日志的工
         max_page = (int(get_blog_count(condition)) -1 ) / int(page_limit) + 1
         blog_list = get_blog_list(condition, now_page = now_page)
         self.render('index.html', blog_list = blog_list,
-                title = title, now_page = now_page, max_page = max_page)
+                title = title, now_page = now_page, max_page = max_page, page_navi_sort = '')
 
 
 def get_blog(uuid, is_edit = False):
