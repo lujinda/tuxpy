@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-16 16:17:17
+# Last modified   : 2014-12-20 21:00:33
 # Filename        : admin/__init__.py
 # Description     : 
 from .index import AdminHandler
@@ -14,4 +14,5 @@ from .listsort import ListSortHandler
 from .upload import UploadHandler
 from .listpage import ListPageHandler
 from .listtag import ListTagHandler
+from .listnav import ListNavHandler
 

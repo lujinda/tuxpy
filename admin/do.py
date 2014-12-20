@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-17 18:44:45
+# Last modified   : 2014-12-21 00:09:20
 # Filename        : admin/do.py
 # Description     : 
 from data import db
@@ -141,4 +141,16 @@ def notop_blog(blog_uuid):
             )
        
 
-
+def write_nav(No, name, url, uuid=''):
+    if not (name and url):
+        return 
+    if not uuid:  # 当导航是添加，而不是编辑时
+        db.nav.insert({'uuid':get_uuid(),
+            'No':No, 'name':name, 'url': url,
+            'is_display':1})
+        
+        return '添加成功'
+        
+def get_nav_list():
+    return db.nav.find().sort([('No', 1)])
+    

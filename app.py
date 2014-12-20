@@ -2,8 +2,8 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-16 16:45:07
-# Filename        : ../../app.py
+# Last modified   : 2014-12-20 21:06:20
+# Filename        : app.py
 # Description     : 
 
 from tornado.web import Application
@@ -15,6 +15,7 @@ from admin import UploadHandler
 from admin.do import get_uuid
 from admin import ListPageHandler
 from admin import ListTagHandler
+from admin import ListNavHandler
 from files import FilesHandler
 from page.index import IndexHandler
 from page.sort import SortPageHandler 
@@ -40,6 +41,7 @@ class TuxpyApplication(Application):
                 (r'/tuxpy/listsort.py', ListSortHandler),
                 (r'/tuxpy/upload.py', UploadHandler),
                 (r'/tuxpy/listtag.py', ListTagHandler),
+                (r'/tuxpy/listnav.py', ListNavHandler),
                 (r'/files/(.+)', FilesHandler),
                 (r'/sort/(.+)?', SortPageHandler),
                 (r'/page/(.+)?', PageHandler),

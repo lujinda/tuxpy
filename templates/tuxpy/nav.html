@@ -1,0 +1,70 @@
+{% extends "main.html" %}
+{% block r_main_title %}
+导航管理
+{% end %}
+{% block body %}
+<form name="nav_msg_form" method="POST">
+    <div id="nav_msg"></div>
+</form>
+<table class="page_nav_table">
+    <thead>
+        <tr>
+            <th width="10%">序列</th>
+            <th width="30%">名称</th>
+            <th width="40%">链接</th>
+            <th width="10%">状态</th>
+            <th width="10%">删除</th>
+        </tr>
+    </thead>
+        <tbody>
+        {% for nav in nav_list %}
+        <tr>
+            <td><input style="margin-left:10%;width:60%;text-align:center" value={{nav['No']}} /></td>
+            <td>{{nav['name']}}</td>
+            <td>{{nav['url']}}</td>
+            <td>{{ '显示' if nav['is_display'] else '隐藏'}}</td>
+            <td>删除</td>
+        </tr>
+        {% end %}
+        </tbody>
+</table>
+<form class="add_nav_form" method="POST">
+    <fieldset>
+        <legend>添加自定义页</legend>
+        <div id="nav_add">
+            <li>
+            <span>序号:</span> <input name="No" value='0' style="width:20px;display:block"/>
+            <span>名称:</span> <input name="name" />
+            </li>
+            <li>
+            <span>链接:</span> <input name="url" />
+            </li>
+            <li>
+            <input class="btn" type="submit" style="width:80px;margin-left:40px;" value="添加" />
+            </li>
+        </div>
+    </fieldset>
+</form>
+<form class="add_nav_form" method="POST" action="?is_add_sort=1">
+    <fieldset>
+        <legend>从分类添加</legend>
+        <li>
+        <select name="sort_list" multiple="multiple" size='5' style="width:90%">
+            {% for sort in sort_list %}
+            <option value="{{sort['uuid']}}">{{sort['name']}}</option>
+            {% end %}
+        </select>
+        </li>
+        <li>
+        <input class="btn" type='submit' style="width:80px;margin-left:40px;" value="添加" />
+        </li>
+    </fieldset>
+
+</form>
+<li style="clear:both;color:red;margin-top:5px">{{mess}}</li>
+<script>
+    var div = document.getElementById('side_bar_5');
+    div.className = 'now_title';
+</script>
+{% end %}
+
