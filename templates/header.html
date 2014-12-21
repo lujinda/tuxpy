@@ -14,7 +14,9 @@
     </div>
     <div id="top_nav">
         {% for nav in nav_list %}
+        {% if nav['is_display'] == 1 %}
         <a href="{{nav['url']}}">{{nav['name']}}</a>
+        {% end %}
         {% end %}
     </div>
 </div>
