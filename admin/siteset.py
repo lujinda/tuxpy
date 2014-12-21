@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-07 22:32:19
+# Last modified   : 2014-12-21 23:11:58
 # Filename        : admin/siteset.py
 # Description     : 
 from tornado.web import  authenticated
@@ -13,20 +13,22 @@ from .do import change_user_pass, check_user_pass, enc_password
 MESS_HTML = 'tuxpy/mess.html'
 
 class ConfigureHandler(BaseHandler):
-    #@authenticated
+    @authenticated
     def get(self):
         self.render('tuxpy/configure.html', site_options=get_site_options())
 
-    #@authenticated
+    @authenticated
     def post(self):
         for key, value in self.request.arguments.items():
             set_site_blog_options('site', key, *value)
         self.render(MESS_HTML, mess="保存成功")
 
 class ConfblogHandler(BaseHandler):
+    @authenticated
     def get(self):
         self.render('tuxpy/confblog.html', blog_options = get_blog_options())
     
+    @authenticated
     def post(self):
         page_limit = self.get_argument('page_limit', '')
         start_n = self.get_argument('start_n', '')
@@ -43,7 +45,7 @@ class BloggerHandler(BaseHandler):
     def get(self):
         self.render('tuxpy/blogger.html', username=self.current_user)
 
-    #@authenticated
+    @authenticated
     def post(self):
         
         if len(self.get_argument('pass_new'))< 6:
@@ -68,7 +70,7 @@ class BloggerHandler(BaseHandler):
     def get(self):
         self.render('tuxpy/blogger.html', username=self.current_user)
 
-    #@authenticated
+    @authenticated
     def post(self):
         
         if len(self.get_argument('pass_new'))< 6:

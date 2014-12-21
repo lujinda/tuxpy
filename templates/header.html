@@ -12,5 +12,10 @@
         <h1><a href="/">{{ site_options['site_name'] }}</a></h1>
         <span>{{ site_options['site_name_sub'] }}</span>
     </div>
+    <div id="top_nav">
+        {% for nav in nav_list %}
+        <a href="{{nav['url']}}">{{nav['name']}}</a>
+        {% end %}
+    </div>
 </div>
 

@@ -31,6 +31,12 @@ function doBlog(opera){
     document.page_msg_form.action="?" + opera + '=1';
     document.page_msg_form.submit();
 }
+function confirmDel(mess, event){
+    if (!confirm(mess)){
+        event.preventDefault();
+        return ;
+    }
+}
 function move_blog(obj){
     var sort_uuid = obj.value;
     if (sort_uuid == '-1')return;

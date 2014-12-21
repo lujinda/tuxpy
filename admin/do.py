@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-21 00:09:20
+# Last modified   : 2014-12-21 22:14:52
 # Filename        : admin/do.py
 # Description     : 
 from data import db
@@ -154,3 +154,14 @@ def write_nav(No, name, url, uuid=''):
 def get_nav_list():
     return db.nav.find().sort([('No', 1)])
     
+def del_nav(uuid):
+    db.nav.remove({'uuid':uuid.replace(' ', '+')})
+
+def switch_nav(uuid):
+    db.nav.update({'uuid':uuid}, {"$set":{'is_display':
+        abs(1 - db.nav.find_one({'uuid': uuid})['is_display'])
+        }})
+
+def order_nav(uuid, No):
+    db.nav.update({'uuid':uuid}, {"$set":{'No':int(No)}})
+

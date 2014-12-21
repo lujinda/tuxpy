@@ -151,7 +151,7 @@ table{
     text-align:left;
     font-size:14px;
     border:1px solid #ddd;
-    margin-bottom:20px;
+    margin-bottom:10px;
 } 
 .page_sort_table thead, .page_nav_table thead{
     background-image:url(../images/sort_head_bg.gif);

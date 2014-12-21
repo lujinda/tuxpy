@@ -2,14 +2,16 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-09 12:43:12
-# Filename        : listsort.py
+# Last modified   : 2014-12-21 23:14:22
+# Filename        : admin/listsort.py
 # Description     : 
 
-from tornado.web import RequestHandler
+from base import BaseHandler
+from tornado.web import authenticated
 from .do import add_sort, del_sort, set_sort, get_sort_list
 
-class ListSortHandler(RequestHandler):
+class ListSortHandler(BaseHandler):
+    @authenticated
     def get(self, mess=''):
         for key, value in self.request.arguments.items(): # 把一些预操作完成一下
             try:
@@ -26,6 +28,7 @@ class ListSortHandler(RequestHandler):
         return del_sort(uuid)
 
 
+    @authenticated
     def post(self):
         if 'set_name' in self.request.arguments:
             mess = set_sort(self.get_argument('set_name'),

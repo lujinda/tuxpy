@@ -35,11 +35,12 @@ ul{
 #top{
     margin:10px auto;
     width:900px;
-    height:120px;
+    overflow:hidden;
 }
 #top_logo, #top_name{
     float:left;
     margin-right:10px;
+    margin-bottom:10px;
 }
 #top #top_name a{
     color:#000;
@@ -155,5 +156,28 @@ ul{
 .blog_title a:hover{
     color:#09c;
     border-bottom:3px solid #09c;
+}
+#top_nav{
+    clear:both;
+    background-color:#fff;
+    border-radius:10px;
+    margin-bottom:10px;
+    border:1px solid #ddd;
+    overflow:hidden;
+}
+#top_nav a{
+    display:block;
+    float:left;
+    padding:6px 30px;
+    font-size:16px;
+    text-align:center;
+    color:#000;
+    font-weight:bold;
+    text-decoration:none;
+}
+#top_nav a:hover, .now_nav{
+    background-color:#666;
+    border-radius:30px;
+    color:#fff;
 }
 

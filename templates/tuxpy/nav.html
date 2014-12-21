@@ -3,31 +3,31 @@
 导航管理
 {% end %}
 {% block body %}
-<form name="nav_msg_form" method="POST">
-    <div id="nav_msg"></div>
-</form>
-<table class="page_nav_table">
-    <thead>
-        <tr>
-            <th width="10%">序列</th>
-            <th width="30%">名称</th>
-            <th width="40%">链接</th>
-            <th width="10%">状态</th>
-            <th width="10%">删除</th>
-        </tr>
-    </thead>
+<form method='POST' action="?order=1">
+    <table class="page_nav_table">
+        <thead>
+            <tr>
+                <th width="10%">序列</th>
+                <th width="30%">名称</th>
+                <th width="40%">链接</th>
+                <th width="10%">状态</th>
+                <th width="10%">删除</th>
+            </tr>
+        </thead>
         <tbody>
-        {% for nav in nav_list %}
-        <tr>
-            <td><input style="margin-left:10%;width:60%;text-align:center" value={{nav['No']}} /></td>
-            <td>{{nav['name']}}</td>
-            <td>{{nav['url']}}</td>
-            <td>{{ '显示' if nav['is_display'] else '隐藏'}}</td>
-            <td>删除</td>
-        </tr>
-        {% end %}
+            {% for nav in nav_list %}
+            <tr>
+                <td><input name="nav_{{nav['uuid']}}" maxlength=4  style="margin-left:10%;width:60%;text-align:center" value={{nav['No']}} /></td>
+                <td>{{nav['name']}}</td>
+                <td>{{nav['url']}}</td>
+                <td><a href="?switch_display={{nav['uuid']}}">{{ '显示' if nav['is_display'] else '隐藏'}}</a></td>
+                <td><a onclick="confirmDel('确定要删除此导航', event)" href="?del={{nav['uuid']}}">删除</a></td>
+            </tr>
+            {% end %}
         </tbody>
-</table>
+    </table>
+    <input class="btn" type='submit' style="width:80px;margin:5px;" value="排序" />
+</form>
 <form class="add_nav_form" method="POST">
     <fieldset>
         <legend>添加自定义页</legend>

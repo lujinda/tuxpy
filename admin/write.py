@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-17 20:30:39
+# Last modified   : 2014-12-21 23:16:55
 # Filename        : admin/write.py
 # Description     : 
 from tornado.web import  authenticated
@@ -14,14 +14,14 @@ import time
 from config import config
 
 class WriteHandler(BaseHandler):
-#    @authenticated
+    @authenticated
     def get(self):
         uuid = self.get_argument('uuid', '')
         blog = get_blog(uuid, is_edit = True)
         self.render('tuxpy/write.html', sort_list = get_sort_list(), blog = blog
                 )
 
-#    @authenticated
+    @authenticated
     def post(self):
         title = self.get_argument('title')
         page_content = self.get_argument('page_content')
