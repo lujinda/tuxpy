@@ -162,13 +162,14 @@ ul{
     background-color:#fff;
     border-radius:10px;
     margin-bottom:10px;
+    padding:0px 10px;
     border:1px solid #ddd;
     overflow:hidden;
 }
 #top_nav a{
     display:block;
     float:left;
-    padding:6px 30px;
+    padding:6px 15px;
     font-size:16px;
     text-align:center;
     color:#000;
