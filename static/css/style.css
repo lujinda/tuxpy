@@ -6,6 +6,8 @@ body{
     background-repeat:no-repeat;
     background-position:right 40px;
     background-attachment: fixed;
+    word-wrap: break-word; 
+    word-break: normal;
 }
 ul{
     list-style-type: none;
@@ -164,6 +166,7 @@ ul{
     margin-bottom:10px;
     padding:0px 10px;
     border:1px solid #ddd;
+    box-shadow:4px 4px 4px rgba(0, 0, 0, 0.2);
     overflow:hidden;
 }
 #top_nav a{
@@ -176,7 +179,7 @@ ul{
     font-weight:bold;
     text-decoration:none;
 }
-#top_nav a:hover, .now_nav{
+#top_nav a:hover, #top_nav a:active, .now_nav{
     background-color:#666;
     border-radius:30px;
     color:#fff;

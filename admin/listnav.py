@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-21 23:16:26
+# Last modified   : 2014-12-21 23:27:47
 # Filename        : admin/listnav.py
 # Description     : 
 from .base import BaseHandler

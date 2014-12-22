@@ -51,3 +51,8 @@ function checkAll(s){
         checkbox_list[i].checked = s;
     }
 }
+
+function will(event){
+    alert("不好意思,由于时间赶,该功能还没实现");
+    event.preventDefault();
+}
