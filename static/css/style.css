@@ -137,6 +137,8 @@ ul{
 }
 .now_a_page{
     font-weight:bold;
+    border:none;
+    background-color:none;
 }
 #page_navi{
     margin-bottom:10px;
