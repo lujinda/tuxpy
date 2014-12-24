@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-20 21:36:23
+# Last modified   : 2014-12-24 08:39:49
 # Filename        : run.py
 # Description     : 
 from tornado import httpserver, ioloop, web
@@ -15,6 +15,6 @@ from app import TuxpyApplication
 if __name__ == "__main__":
     options.parse_command_line()
     http_server = httpserver.HTTPServer(TuxpyApplication())
-    http_server.listen(1234)
+    http_server.listen(1234, '127.0.0.1')
     ioloop.IOLoop.instance().start()
 
