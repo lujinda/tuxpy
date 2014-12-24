@@ -2,11 +2,12 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-07 21:25:00
+# Last modified   : 2014-12-24 22:48:01
 # Filename        : data/do.py
 # Description     : 
 from .db import cfg, db
 from data import db
+import tornado
 
 def get_server_info():
     import time
@@ -16,6 +17,7 @@ def get_server_info():
     server_info['os'] = platform.platform()
     server_info['python'] = platform.python_version()
     server_info['time'] = time.ctime()
+    server_info['tornado_version'] = tornado.version
     return server_info
 
 def get_site_options():
