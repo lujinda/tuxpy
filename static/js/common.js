@@ -1,3 +1,13 @@
+function checkbox_checked(checkboxs){
+    checkboxs = document.getElementsByName(name);
+    var checkdCount = 0;
+    for (var i = 0; i < checkboxs.length; i++){
+        if (checkboxs[i].checked == true){
+            checkdCount += 1;
+        }
+    }
+    return checkdCount;
+}
 function show(event, obj,id) {
     event.preventDefault();
     var objDiv = $("#"+id+"");
@@ -25,6 +35,10 @@ function filterPage(event, target_id){
 }
 
 function doBlog(opera){
+    if (! checkbox_checked('blog_checkbox')){
+        alert("你还没有选中项");
+        return;
+    }
     if (opera == 'del' && !confirm('你确定要删除所选项')){
         return;
     }
@@ -38,6 +52,10 @@ function confirmDel(mess, event){
     }
 }
 function move_blog(obj){
+    if (! checkbox_checked('blog_checkbox')){
+        alert("你还没有选中项");
+        return;
+    }
     var sort_uuid = obj.value;
     if (sort_uuid == '-1')return;
     document.page_msg_form.action="?move=1";
