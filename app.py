@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-20 21:06:20
+# Last modified   : 2014-12-24 15:47:10
 # Filename        : app.py
 # Description     : 
 
@@ -46,7 +46,7 @@ class TuxpyApplication(Application):
                 (r'/sort/(.+)?', SortPageHandler),
                 (r'/page/(.+)?', PageHandler),
                 (r'/search/(.+)?', SearchHandler),
-                (r'/tag/(.+)?', TagHandler), # 这里的url参数是tag名字，不是uuid
+                (r'/tag/(.+)?', TagHandler), # 这里的url参数是tag名字，不是uuid 其他的都是uuid
                 ]
         settings = {
                 'template_path': path.join(path.dirname(__file__),
@@ -55,9 +55,9 @@ class TuxpyApplication(Application):
                     'static'),
                 'cookie_secret':get_uuid(),
                 'login_url':'/tuxpy/login.py',
-                'ui_modules': {'admin_header':AdminHeaderModule,
+                'ui_modules': {'admin_header':AdminHeaderModule, # 后台header部分模块
                     'header':HeaderModule, 'footer': FooterModule,
-                    'right':SiderHandlerModule},
+                    'right':SiderHandlerModule}, # 网站右侧栏，打算做成自定义式
                 'debug':True,
                 }
         Application.__init__(self, handlers, **settings)

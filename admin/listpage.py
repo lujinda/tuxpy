@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-21 23:11:02
+# Last modified   : 2014-12-24 22:38:29
 # Filename        : admin/listpage.py
 # Description     : 
 from base import BaseHandler
@@ -12,20 +12,21 @@ from .do import del_blog
 from .do import get_sort_list, move_blog, top_blog, notop_blog, get_tag_list
 
 class ListPageHandler(BaseHandler):
-    @authenticated
+    #@authenticated
     def get(self, mess=''):
         page_navi_sort, filter_id, condition = self.make_title_condition() # filter_id 用来获取筛选的那个分类的id值，根据这个id值分析出它的父节点，并把它显示
         self.list_blog(condition = condition, mess = mess, filter_id = filter_id, page_navi_sort =  page_navi_sort) # page_navi_sort 主要用来避免分类过滤时的选页
 
     def make_title_condition(self):
-        if 'sort' in self.request.arguments:
-            sort_uuid = self.get_argument('sort', '').replace(' ', '+')
-            return "&sort=%s" %(sort_uuid,), '_' + sort_uuid, {'sort': sort_uuid}
+        print dir(self)
+        if 'now_sort' in self.request.arguments:
+            sort_uuid = self.get_query_argument('now_sort', '').replace(' ', '+')
+            return "&now_sort=%s" %(sort_uuid,), '_' + sort_uuid, {'sort': sort_uuid}
 
-        if 'tag' in self.request.arguments:
-            tag_name = self.get_argument('tag', '')
+        if 'now_tag' in self.request.arguments:
+            tag_name = self.get_query_argument('now_tag', '')
             blog_uuid_list = get_tag_b_uuid(tag_name)
-            return "&tag=%s" % (tag_name, ), '_' + tag_name, {'uuid': {"$in": blog_uuid_list}}
+            return "&now_tag=%s" % (tag_name, ), '_' + tag_name, {'uuid': {"$in": blog_uuid_list}}
 
         return '', None, {}
 
@@ -39,7 +40,7 @@ class ListPageHandler(BaseHandler):
                 now_page = now_page, max_page = max_page, tag_list = get_tag_list(),
                 page_navi_sort = page_navi_sort)
 
-    @authenticated
+#    @authenticated
     def post(self):
         blog_uuid_list = self.get_arguments('blog_checkbox')
         for key, value in self.request.arguments.items(): # 假
@@ -52,6 +53,7 @@ class ListPageHandler(BaseHandler):
                     mess = '操作失败，请重试'
                 finally:
                     break
+
         self.get(mess)
         
 

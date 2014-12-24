@@ -14,14 +14,14 @@
     <div name="page_filter_title" id="page_sort"  href="" style="display:none">
         <strong>分类: </strong>
         {% for sort in sort_list %}
-        <a id="_{{sort['uuid']}}" href="?sort={{sort['uuid']}}">{{sort['name']}}</a>
+        <a id="_{{sort['uuid']}}" href="?now_sort={{sort['uuid']}}">{{sort['name']}}</a>
         {% end %}
         <a id="_" href="?sort=">未分类</a>
     </div>
     <div name="page_filter_title" id="page_tag" href="" style="display:none">
         <strong>标签: </strong>
         {% for tag in tag_list %}
-        <a id="_{{tag['name']}}" href="?tag={{tag['name']}}">{{tag['name']}}</a>
+        <a id="_{{tag['name']}}" href="?now_tag={{tag['name']}}">{{tag['name']}}</a>
         {% end %}
     </div>
     </div>

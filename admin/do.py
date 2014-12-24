@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-21 22:14:52
+# Last modified   : 2014-12-24 15:50:03
 # Filename        : admin/do.py
 # Description     : 
 from data import db
@@ -36,6 +36,7 @@ def del_sort(uuid):
     db.sort.remove({'uuid':uuid})
     return '已成功执行删除操作'
 
+# 用来判断类名或类别名有没有重复的
 def sort_isexist(value):
     return db.sort.find_one({"$or":[{'name':value}, {'alias':value}]})
 
@@ -157,11 +158,13 @@ def get_nav_list():
 def del_nav(uuid):
     db.nav.remove({'uuid':uuid.replace(' ', '+')})
 
+# 切换导航的显示状态
 def switch_nav(uuid):
     db.nav.update({'uuid':uuid}, {"$set":{'is_display':
         abs(1 - db.nav.find_one({'uuid': uuid})['is_display'])
         }})
 
+# 修改导航的序号
 def order_nav(uuid, No):
     db.nav.update({'uuid':uuid}, {"$set":{'No':int(No)}})
 

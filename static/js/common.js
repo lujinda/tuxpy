@@ -1,4 +1,4 @@
-function checkbox_checked(checkboxs){
+function checkbox_checked(name){
     checkboxs = document.getElementsByName(name);
     var checkdCount = 0;
     for (var i = 0; i < checkboxs.length; i++){
@@ -39,6 +39,7 @@ function doBlog(opera){
         alert("你还没有选中项");
         return;
     }
+    
     if (opera == 'del' && !confirm('你确定要删除所选项')){
         return;
     }
