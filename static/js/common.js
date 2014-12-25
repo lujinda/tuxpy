@@ -75,3 +75,19 @@ function will(event){
     alert("不好意思,由于时间赶,该功能还没实现");
     event.preventDefault();
 }
+$(document).ready(function(){
+    $("#goToTop").hide();
+    $(function(){
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > $(window).height() / 3){
+                $("#goToTop").fadeIn();
+            }else{
+                $("#goToTop").fadeOut();
+            }
+        });
+    });
+    
+    $('#goToTop a').click(function (event){
+        $('html,body').animate({scrollTop:0}, 'slow');
+    });
+});

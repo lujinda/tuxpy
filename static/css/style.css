@@ -187,3 +187,20 @@ ul{
     color:#fff;
 }
 
+#goToTop{
+    position:fixed;
+    bottom:10%;
+    right:10%;
+    width:28px;
+    height:64px;
+}
+#goToTop a{
+    display:block;
+    width:100%;
+    background-image:url(../images/goToTop.png);
+    background-position:left top;
+    height:100%;
+}
+#goToTop a:hover{
+    background-position:right top;
+}
