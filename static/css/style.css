@@ -212,3 +212,33 @@ ul{
 #tux img{
     width:100px;
 }
+#tux_summary{
+    position:fixed;
+    z-index:99;
+    right:5px;
+    top:120px;
+    padding:16px;
+    line-height:120%;
+    text-align:center;
+    box-shadow:4px 4px 8px rgba(0, 0, 0, 0.2);
+    border:2px solid #ccc;
+    max-width:300px;
+    background-color:#fff;
+    border-radius:20px;
+    display:inline-block;
+    -moz-border-radius:20px;
+    -webkit-border-radius:20px;
+}
+#tux_summary:before{
+    width:0;
+    height:0;
+    display:block;
+    border-style:solid;
+    content:"\00a0";
+    border-width:15px;
+    border-color:transparent transparent #ccc transparent;
+    position:absolute;
+    z-index:-1;
+    top:-30px;
+    right:20px;
+}
