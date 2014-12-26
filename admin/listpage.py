@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-24 22:38:29
+# Last modified   : 2014-12-26 16:09:33
 # Filename        : admin/listpage.py
 # Description     : 
 from base import BaseHandler
@@ -18,7 +18,6 @@ class ListPageHandler(BaseHandler):
         self.list_blog(condition = condition, mess = mess, filter_id = filter_id, page_navi_sort =  page_navi_sort) # page_navi_sort 主要用来避免分类过滤时的选页
 
     def make_title_condition(self):
-        print dir(self)
         if 'now_sort' in self.request.arguments:
             sort_uuid = self.get_query_argument('now_sort', '').replace(' ', '+')
             return "&now_sort=%s" %(sort_uuid,), '_' + sort_uuid, {'sort': sort_uuid}

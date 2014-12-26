@@ -80,13 +80,18 @@ $(document).ready(function(){
     $(function(){
         $(window).scroll(function(){
             if ($(this).scrollTop() > $(window).height() / 3){
-                $("#goToTop").fadeIn();
+                $("#goToTop").fadeIn(1000);
+                $("#tux img").fadeOut(800);
             }else{
-                $("#goToTop").fadeOut();
+                $("#goToTop").fadeOut(1000);
+                $("#tux img").fadeIn(800);
             }
         });
     });
-    
+
+    $('#tux img').mouseenter(function (event){
+        
+    });
     $('#goToTop a').click(function (event){
         $('html,body').animate({scrollTop:0}, 'slow');
     });

@@ -204,3 +204,11 @@ ul{
 #goToTop a:hover{
     background-position:right top;
 }
+#tux{
+    position:fixed;
+    bottom:7%;
+    right:7%;
+}
+#tux img{
+    width:100px;
+}

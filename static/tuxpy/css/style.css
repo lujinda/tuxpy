@@ -164,6 +164,9 @@ table{
     height:23px;
 
 }
+.page_sort_table tbody tr:nth-child(even), .page_nav_table tbody tr:nth-child(even){
+    background-color: #e8e8e8;
+}
 .page_sort_table tbody tr, .page_nav_table tbody tr{
     height:30px;
 }
@@ -172,9 +175,6 @@ table{
 }
 .page_sort_table tbody td, .page_sort_table tbody td{
     padding-left:4px;
-}
-.page_sort_table tbody tr:nth-child(even), .page_nav_table tbody tr:nth-child(even){
-    background-color: #e8e8e8;
 }
 #sort_msg{
     background-color:#eee;
