@@ -96,12 +96,14 @@ $(document).ready(function(){
     $('#goToTop a').click(function (event){
         $('html,body').animate({scrollTop:0}, 'slow');
     });
-    $('.sider_content a').mouseover(function (){
-        show_tux_summary($(this).next().html());
+    $('.sider_content a').mouseenter(function (){
+        summary = $(this).next().html();
+        if ($(this).next().text().trim())
+            show_tux_summary(summary);
     });
-    $('.sider_content a').mouseout(function (){
+    $('.sider_content a').mouseleave(function (){
         $("#tux_summary").hide();
-    });
+    }); // 鼠标移开后，去掉右上角的提示
     $("#tux_summary").click(function (){
         $(this).fadeOut(1000);
     }).mouseover(function (){
