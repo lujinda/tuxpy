@@ -1,45 +1,8 @@
 <ul id="main_sider">
+    {% for sider_content in sider_content_list %}
     <li>
-        <div class="sider_title">搜索博客</div>
-        <div class="sider_content">
-            <form method="POST" action="/search/">
-                <input name="keyword" id="search_input" />
-            </form>
-        </div>
+    {% raw sider_content %}
     </li>
-    <li>
-        <div class="sider_title">最新博客</div>
-        <div class="sider_content">
-            {% for _blog in blog_list_new %}
-            <a href="/page/{{_blog['uuid']}}">{{ _blog['title'] }}</a>
-            <div style="display:none">
-                {% raw _blog['summary'] %}
-            </div>
-            {% end %}
-        </div>
-    </li>
+    {% end %}
 
-    <li>
-        <div class="sider_title">最热博客</div>
-        <div class="sider_content">
-            {% for _blog in blog_list_hot %}
-            <a  href="/page/{{_blog['uuid']}}">{{ _blog['title'] }}</a>
-            <div style="display:none">
-                {% raw _blog['summary'] %}
-            </div>
-            {% end %}
-        </div>
-    </li>
-
-    <li>
-        <div class="sider_title">随机博客</div>
-        <div class="sider_content">
-            {% for _blog in blog_list_rand %}
-            <a href="/page/{{_blog['uuid']}}">{{ _blog['title'] }}</a>
-            <div style="display:none">
-                {% raw _blog['summary'] %}
-            </div>
-            {% end %}
-        </div>
-    </li>
 </ul>

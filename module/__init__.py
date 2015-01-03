@@ -2,14 +2,14 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-21 22:57:49
+# Last modified   : 2015-01-04 00:14:54
 # Filename        : module/__init__.py
 # Description     : 
 from tornado import web
 from admin.base import BaseHandler
 from admin.do import get_nav_list
 from data.do import get_site_options, get_page_view
-from page.do import get_blog_list_new, get_blog_list_hot, get_blog_list_rand
+from .sider_module import get_sider_content_list
 
 class HeaderModule(web.UIModule):
     def render(self, render_file):
@@ -27,8 +27,7 @@ class FooterModule(web.UIModule):
 
 class SiderHandlerModule(web.UIModule):
     def render(self, render_file):
-        return self.render_string(render_file,
-                blog_list_new = get_blog_list_new(), 
-                blog_list_hot = get_blog_list_hot(),
-                blog_list_rand = get_blog_list_rand())
+        sider_content_list = get_sider_content_list()
+        return self.render_string(render_file, 
+                sider_content_list = sider_content_list)
 

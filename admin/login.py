@@ -2,8 +2,8 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-04 21:02:02
-# Filename        : admin/login.py
+# Last modified   : 2014-12-29 20:52:38
+# Filename        : /home/ljd/py/tuxpy/admin/login.py
 # Description     : 
 from tornado.web import RequestHandler
 from .base import enc_password
