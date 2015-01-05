@@ -2,13 +2,15 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2015-01-04 00:19:01
-# Filename        : blog_hot.py
+# Last modified   : 2015-01-05 21:11:43
+# Filename        : sider/blog_hot.py
 # Description     : 
 
 from page.do import get_blog_list_hot
 
-__all__ = ['_Sider_BlogListHot']
+SIDER_TITLE = '最热博客'
+
+SIDER_NAME = '_Sider_BlogListHot'
 class _Sider_BlogListHot():
     def make_html(self):
         template = """ <div class="sider_title">热门博客</div>

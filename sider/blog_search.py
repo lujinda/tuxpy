@@ -2,11 +2,12 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2015-01-04 00:23:04
-# Filename        : blog_search.py
+# Last modified   : 2015-01-05 21:12:32
+# Filename        : sider/blog_search.py
 # Description     : 
 
-__all__ = ['_Sider_BlogSearch']
+SIDER_TITLE = '搜索博客'
+SIDER_NAME = '_Sider_BlogSearch'
 
 class _Sider_BlogSearch:
     def make_html(self):

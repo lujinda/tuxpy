@@ -2,11 +2,13 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2015-01-04 00:19:20
-# Filename        : blog_rand.py
+# Last modified   : 2015-01-05 21:12:05
+# Filename        : sider/blog_rand.py
 # Description     : 
 from page.do import get_blog_list_rand
-__all__ = ['_Sider_BlogListRand']
+
+SIDER_TITLE = '随机博客'
+SIDER_NAME = '_Sider_BlogListRand'
 
 class _Sider_BlogListRand():
     def make_html(self):

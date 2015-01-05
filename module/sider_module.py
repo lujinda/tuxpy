@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2015-01-04 00:15:49
+# Last modified   : 2015-01-05 20:32:32
 # Filename        : module/sider_module.py
 # Description     : 
 
@@ -19,4 +19,3 @@ def get_sider_content_list():
             sider_content_list.append(sider_obj().make_html())
         
     return sider_content_list
-

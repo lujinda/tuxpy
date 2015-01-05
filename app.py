@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-24 15:47:10
+# Last modified   : 2015-01-05 19:37:03
 # Filename        : app.py
 # Description     : 
 
@@ -16,6 +16,7 @@ from admin.do import get_uuid
 from admin import ListPageHandler
 from admin import ListTagHandler
 from admin import ListNavHandler
+from admin import ListSiderHandler
 from files import FilesHandler
 from page.index import IndexHandler
 from page.sort import SortPageHandler 
@@ -42,6 +43,7 @@ class TuxpyApplication(Application):
                 (r'/tuxpy/upload.py', UploadHandler),
                 (r'/tuxpy/listtag.py', ListTagHandler),
                 (r'/tuxpy/listnav.py', ListNavHandler),
+                (r'/tuxpy/listsider.py', ListSiderHandler),
                 (r'/files/(.+)', FilesHandler),
                 (r'/sort/(.+)?', SortPageHandler),
                 (r'/page/(.+)?', PageHandler),
