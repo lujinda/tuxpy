@@ -2,8 +2,8 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2015-01-05 22:53:11
-# Filename        : sider/__init__.py
+# Last modified   : 2015-01-08 22:25:32
+# Filename        : /data/py/tuxpy/sider/__init__.py
 # Description     : 把每个启动的插件都加载进来，每个插件都是一个class，都需要有一个make_html，插件源文件的__all__需要指定
 import glob
 import os
@@ -12,7 +12,7 @@ from config.do import update_sider
 __all__ = []
 all_sider = {}
 
-for plug in glob.glob('sider/*.py'):
+for plug in glob.glob(os.path.dirname(os.path.abspath(__file__)) + '/*.py'):
     plug = os.path.basename(plug)
     if plug.startswith('_'):
         continue

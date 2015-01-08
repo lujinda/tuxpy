@@ -8,7 +8,7 @@ def create_new_sider(sider_name, sider_title):
         'sider_name':sider_name, 'sider_title':sider_title})
 
 def update_sider_info(sider_name, **kwargs):
-    db.sider.update({'sider_name': sider_name, '$nor':[{x:kwargs[x] for x in kwargs}]},
+    db.sider.update({'sider_name': sider_name, '$nor':[{x:kwargs[x]} for x in kwargs]},
             {"$set": kwargs})
 
 def remove_sider_info(sider_name):
