@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-24 15:50:03
+# Last modified   : 2015-01-10 15:57:13
 # Filename        : admin/do.py
 # Description     : 
 from data import db
@@ -167,4 +167,15 @@ def switch_nav(uuid):
 # 修改导航的序号
 def order_nav(uuid, No):
     db.nav.update({'uuid':uuid}, {"$set":{'No':int(No)}})
+
+def get_sider_list():
+    return db.sider.find().sort([('sider_no', 1)])
+
+def switch_sider(uuid):
+    db.sider.update({'uuid':uuid}, {"$set":{'sider_show':
+        abs(1 - db.sider.find_one({'uuid': uuid})['sider_show'])
+        }})
+
+def order_sider(uuid, sider_no):
+    db.sider.update({'uuid':uuid}, {"$set":{'sider_no':int(sider_no)}})
 

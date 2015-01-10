@@ -1,3 +1,11 @@
+String.format = function(src){
+    if (arguments.length == 0)
+        return null;
+    var args = Array.prototype.slice.call(arguments, 1);
+    return src.replace(/\{(\d+)\}/g, function(m, i){
+        return args[i];
+    });
+};
 function checkbox_checked(name){
     checkboxs = document.getElementsByName(name);
     var checkdCount = 0;
@@ -11,7 +19,7 @@ function checkbox_checked(name){
 function show(event, obj,id) {
     event.preventDefault();
     var objDiv = $("#"+id+"");
-    $(objDiv).html("<li><span>名称/别名:</span> <input name='value' value='"+ obj.innerHTML + "'/></li><li><a href='#' OnClick=\"javascript:hide(event, this, 'sort_msg');\">[关闭]</a><a  href=\"javascript:document.sort_msg_form.action='/tuxpy/listsort.py?set_" + obj.name + "=" + obj.id  + "';document.sort_msg_form.submit();\">[保存]</a></li>");
+    $(objDiv).html(String.format("<li><span>名称/别名:</span> <input name='value' value='{0}'/></li><li><a href='#' OnClick=\"javascript:hide(event, this, 'sort_msg');\">[关闭]</a><a  href=\"javascript:document.sort_msg_form.action='/tuxpy/listsort.py?set_{1}={2}';document.sort_msg_form.submit();\">[保存]</a></li>", obj.innerHTML, obj.name, obj.id));
     $(objDiv).css("display","block");
     $(objDiv).css("left", event.clientX);
     $(objDiv).css("top", event.clientY + 30);
@@ -110,3 +118,4 @@ $(document).ready(function(){
         $(this).fadeOut(1000);
     });
 });
+

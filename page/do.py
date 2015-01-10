@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-18 11:52:10
+# Last modified   : 2015-01-10 15:04:43
 # Filename        : page/do.py
 # Description     : 
 from data.db import db
@@ -89,4 +89,7 @@ def get_blog_list_rand(): # 随机获取博客数，需要改进
 
 def get_tag_b_uuid(tag):
     return db.tag.find_one({'name': tag})['b_uuid']
+
+def get_sider_list_show():
+    return db.sider.find({'sider_show': 1}).sort([('sider_no', 1)])
 

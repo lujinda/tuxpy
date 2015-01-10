@@ -35,4 +35,9 @@
         </div>
 
     </body>
+    <script>
+        var pathname_parts = window.location.pathname.split('/'); // 取出当前pathname的最后一个文件名
+        var td_name = pathname_parts[pathname_parts.length - 1];
+        $(String.format('table tr td;[name="{0}"]', td_name)).addClass('now_title');
+    </script>
 </html>

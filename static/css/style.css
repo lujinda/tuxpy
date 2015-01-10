@@ -21,7 +21,7 @@ ul{
 }
 #header div{
     text-align:right;
-    width:900px;
+    width:1000px;
     margin:0px auto;
     padding:5px 0px;
 }
@@ -36,7 +36,7 @@ ul{
 }
 #top{
     margin:10px auto;
-    width:900px;
+    width:1000px;
     overflow:hidden;
 }
 #top_logo, #top_name{
@@ -54,7 +54,7 @@ ul{
 }
 
 #main{
-    width:900px;
+    width:1000px;
     margin:10px auto;
     overflow: auto;
     display:block;
@@ -65,10 +65,10 @@ ul{
 }
 #l_main{
     float:left;
-    width:700px;
+    width:750px;
 }
 #r_main{
-    width:190px;
+    width:220px;
     float:right;
     overflow:auto;
 }
@@ -125,7 +125,7 @@ ul{
 #footer{
     clear:both;
     margin: 10px auto;
-    width: 900px;
+    width: 100%;
     color:#666;
     font-size:14px;
     text-align:center;
@@ -191,6 +191,7 @@ ul{
     position:fixed;
     bottom:10%;
     right:10%;
+    z-index:99;
     width:28px;
     height:64px;
 }
@@ -208,6 +209,7 @@ ul{
     position:fixed;
     bottom:7%;
     right:7%;
+    z-index:99;
 }
 #tux img{
     width:100px;

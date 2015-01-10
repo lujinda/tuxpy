@@ -146,34 +146,34 @@ table{
     font-size:13px;
     margin:10px;
 }
-.page_sort_table, .page_nav_table{
+.page_sort_table, .page_nav_table, .sider_table{
     width:100%;
     text-align:left;
     font-size:14px;
     border:1px solid #ddd;
     margin-bottom:10px;
 } 
-.page_sort_table thead, .page_nav_table thead{
+.page_sort_table thead, .page_nav_table thead, .sider_table thead{
     background-image:url(../images/sort_head_bg.gif);
     line-height:23px;
     color:#666;
 }
-.page_sort_table thead th, .page_nav_table thead th{
+.page_sort_table thead th, .page_nav_table thead th, .sider_table thead th{
     border:1px solid #ddd;
     padding-left:4px;
     height:23px;
 
 }
-.page_sort_table tbody tr:nth-child(even), .page_nav_table tbody tr:nth-child(even){
+.page_sort_table tbody tr:nth-child(even), .page_nav_table tbody tr:nth-child(even), .sider_table tbody tr:nth-child(even){
     background-color: #e8e8e8;
 }
-.page_sort_table tbody tr, .page_nav_table tbody tr{
+.page_sort_table tbody tr, .page_nav_table tbody tr, .sider_table tbody tr{
     height:30px;
 }
-.page_sort_table tbody tr:hover, .page_nav_table tbody tr:hover{
+.page_sort_table tbody tr:hover, .page_nav_table tbody tr:hover, .sider_table tbody tr:hover{
     background-color:#ddd;
 }
-.page_sort_table tbody td, .page_sort_table tbody td{
+.page_sort_table tbody td, .page_sort_table tbody td, .sider_table tbody td{
     padding-left:4px;
 }
 #sort_msg{
