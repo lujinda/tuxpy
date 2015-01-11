@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2015-01-10 14:28:45
+# Last modified   : 2015-01-11 12:02:56
 # Filename        : sider/blog_hot.py
 # Description     : 
 
@@ -14,12 +14,7 @@ SIDER_DESCRIPTION = '显示查看数最高的博客'
 SIDER_NAME = '_Sider_BlogListHot'
 class _Sider_BlogListHot():
     def make_html(self):
-        template = """ <div class="sider_title">%s</div>
-        <div class="sider_content">
-            %s 
-        </div>
-            """
-        return  template % (SIDER_TITLE,
+        return  (SIDER_TITLE,
             '\n'.join([ '<a href="/page/{uuid}">{title}</a><div style="display:none">{summary}</div>'.format(
                 uuid = blog['uuid'],
                 title = blog['title'].encode('utf-8'),
