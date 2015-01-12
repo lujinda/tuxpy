@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2015-01-12 11:26:40
+# Last modified   : 2015-01-12 19:33:38
 # Filename        : data/do.py
 # Description     : 
 from .db import cfg, db
@@ -56,7 +56,6 @@ class Notification():
     def send(self, status, data):
         if status not in self.callbacks:
             return
-        for c in self.callbacks[status]:
-            c(data)
-        self.callbacks[status] = []
+        while self.callbacks[status]:
+            self.callbacks[status].pop()(data)
 
