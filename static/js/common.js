@@ -87,7 +87,6 @@ $(document).ready(function(){
     function show_tux_summary(summary){
         $("#tux_summary").html(summary).fadeIn();
     };
-
     $("#goToTop").hide();
     $(function(){
         $(window).scroll(function(){

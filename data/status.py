@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2015-01-12 11:25:09
+# Last modified   : 2015-01-12 12:24:22
 # Filename        : data/status.py
 # Description     : 
 

@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2015-01-12 11:40:32
+# Last modified   : 2015-01-12 12:23:37
 # Filename        : sider/view_count.py
 # Description     : 
 
@@ -20,10 +20,11 @@ class _Sider_ViewCount:
         <script>
         setTimeout(request_view_count, 100);
         function request_view_count(){
-            $.getJSON('/status.py?status=view_count',{}, function(data, status, xhr){
+            $.getJSON('/status.py?status=view_count',
+                function(data, status, xhr){
                 $('#view_count_div').fadeOut(500).html(data['view_count']).fadeIn(500);
+                setTimeout(request_view_count, 0);
             });
-            setTimeout(request_view_count, 0);
         }
         </script>
         """ % (get_view_count(),) )
