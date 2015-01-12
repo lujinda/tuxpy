@@ -98,6 +98,13 @@
             is_top.setAttribute('value', '0');
         }
     }
+    $('select').change(function (){
+        if ((!$('#title').val().trim()) && ($("select").find('option:selected').text() == '一天回顾')){
+            d = new Date();
+            day_list = ['日', '一', '二', '三', '四', '五', '六']
+            $('#title').val(String.format('一天回顾:{0}年{1}月{2}日 星期{3}', d.getFullYear(), d.getMonth() + 1, d.getDate(), day_list[d.getDay()]));
+        }
+    });
     
 </script>
 
