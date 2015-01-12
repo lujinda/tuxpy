@@ -2,12 +2,13 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2015-01-10 15:04:43
+# Last modified   : 2015-01-12 11:26:18
 # Filename        : page/do.py
 # Description     : 
 from data.db import db
-from data.do import get_blog_options
+from data.do import get_blog_options, get_page_view
 from tornado.web import RequestHandler
+import json
 
 
 def get_sort_uuid(alias):
@@ -60,6 +61,7 @@ class PageListHandler(RequestHandler): # 完成一些共用的列出日志的工
         page_limit = get_blog_options()['page_limit']
         max_page = (int(get_blog_count(condition)) -1 ) / int(page_limit) + 1
         blog_list = get_blog_list(condition, now_page = now_page)
+        self.application.notification.send('view_count', {'view_count': get_page_view()})
         self.render('index.html', blog_list = blog_list,
                 title = title, now_page = now_page, max_page = max_page, page_navi_sort = '')
 

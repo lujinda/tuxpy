@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2015-01-04 00:14:54
+# Last modified   : 2015-01-12 10:25:17
 # Filename        : module/__init__.py
 # Description     : 
 from tornado import web
@@ -23,7 +23,7 @@ class AdminHeaderModule(HeaderModule):
 
 class FooterModule(web.UIModule):
     def render(self, render_file):
-        return self.render_string(render_file, view = get_page_view(), site_options = get_site_options())
+        return self.render_string(render_file, site_options = get_site_options())
 
 class SiderHandlerModule(web.UIModule):
     def render(self, render_file):

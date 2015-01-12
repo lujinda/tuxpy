@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2015-01-05 19:37:03
+# Last modified   : 2015-01-12 10:29:25
 # Filename        : app.py
 # Description     : 
 
@@ -23,10 +23,13 @@ from page.sort import SortPageHandler
 from page.tag import TagHandler
 from page.search import SearchHandler
 from page.page import PageHandler
+from data.status import StatusHandler
+from data.do import Notification
 from os import path
 
 from module import AdminHeaderModule, HeaderModule, FooterModule, SiderHandlerModule
 class TuxpyApplication(Application):
+    notification = Notification()
     def __init__(self):
         handlers = [
                 (r'/', IndexHandler),
@@ -48,6 +51,7 @@ class TuxpyApplication(Application):
                 (r'/sort/(.+)?', SortPageHandler),
                 (r'/page/(.+)?', PageHandler),
                 (r'/search/(.+)?', SearchHandler),
+                (r'/status.py', StatusHandler),
                 (r'/tag/(.+)?', TagHandler), # 这里的url参数是tag名字，不是uuid 其他的都是uuid
                 ]
         settings = {

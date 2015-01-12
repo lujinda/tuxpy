@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-24 22:48:01
+# Last modified   : 2015-01-12 11:26:40
 # Filename        : data/do.py
 # Description     : 
 from .db import cfg, db
@@ -44,4 +44,19 @@ def get_page_view():
     else:
         view = view['view']
     return view
+
+def get_view_count():
+    return db.var.find_one()['view']
+
+class Notification():
+    callbacks = {}
+    def register(self, status, func):
+        self.callbacks.setdefault(status, []).append(func)
+
+    def send(self, status, data):
+        if status not in self.callbacks:
+            return
+        for c in self.callbacks[status]:
+            c(data)
+        self.callbacks[status] = []
 

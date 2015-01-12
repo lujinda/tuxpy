@@ -2,8 +2,8 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2014-12-15 23:41:04
-# Filename        : index.py
+# Last modified   : 2015-01-12 11:25:49
+# Filename        : page/index.py
 # Description     : 
 from tornado.web import RequestHandler
 from .do import get_blog_list, PageListHandler
