@@ -2,7 +2,7 @@
 #coding:utf8
 # Author          : tuxpy
 # Email           : q8886888@qq.com
-# Last modified   : 2015-01-12 11:17:54
+# Last modified   : 2015-01-12 11:40:32
 # Filename        : sider/view_count.py
 # Description     : 
 
@@ -14,12 +14,14 @@ SIDER_DESCRIPTION = '界面共访问量'
 class _Sider_ViewCount:
     def make_html(self):
         return  (SIDER_TITLE, """
-        <span id="view_count_span">%s</span>
+        <div style="height:20px;background-color:#ccc;text-align:center;padding:6px;font-weight:bold;">
+        <div id="view_count_div">%s</div>
+        </div>
         <script>
         setTimeout(request_view_count, 100);
         function request_view_count(){
             $.getJSON('/status.py?status=view_count',{}, function(data, status, xhr){
-                $('#view_count_span').html(data['view_count']);
+                $('#view_count_div').fadeOut(500).html(data['view_count']).fadeIn(500);
             });
             setTimeout(request_view_count, 0);
         }
